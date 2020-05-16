@@ -38,6 +38,7 @@ $(function () {
 		"data": "{\r\n\"apiKey\": \"\",\r\n \"modelName\": \"Address\",\r\n \"calledMethod\": \"searchSettlements\",\r\n \"methodProperties\": {\r\n \"CityName\": \"васильевка\",\r\n \"Limit\": 5\r\n }\r\n}"
 	}
 
-	$.ajax(settings).done(function (response) {> console.log(response);
+	$.ajax(settings).done(function (response) {
+		console.log(response);
 	});
 });
