@@ -9,7 +9,7 @@ const keyObj = {
 	"modelName": "InternetDocument",
 	"calledMethod": "getDocumentList",
 	"methodProperties": {
-		"DateTimeFrom": "01.05.2020",
+		"DateTimeFrom": "01.01.2018",
 		"DateTimeTo": "23.05.2020",
 		// "Page": "1",
 		"GetFullList": "1"
@@ -38,8 +38,10 @@ async function start(stringifyKeyObj) {
 	});
 	let answerObj = {}
 	const answer = await response.json();
-	// console.log('Успех:', answer);
+	console.log('Успех:', answer);
 	for (let i in answer.data) {
 		console.log('ЕН', answer.data[i].IntDocNumber);
+
 	}
+	document.querySelector('#out').innerHTML += JSON.stringify(answer);
 }
