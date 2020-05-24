@@ -9,9 +9,9 @@ const keyObj = {
 	"modelName": "InternetDocument",
 	"calledMethod": "getDocumentList",
 	"methodProperties": {
-		"DateTimeFrom": "01.01.2018",
+		"DateTimeFrom": "01.01.2017",
 		"DateTimeTo": "23.05.2020",
-		// "Page": "1",
+		"Page": "1",
 		"GetFullList": "1"
 	}
 }
