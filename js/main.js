@@ -1,35 +1,94 @@
 save.addEventListener('click', event => {
-	let key = document.querySelector('#key').value;
+	let key = document.querySelector('#key');
+	keyObj.apiKey = key.value;
+	start(stringifyKeyObj(keyObj));
 })
-
-$.ajax({
-	type: 'POST',
-	dataType: 'json',
-	url: 'https://api.novaposhta.ua/v2.0/json/',
-	data: JSON.stringify(
-		{
-			"apiKey": "bf9184305646fc07dfee4e2c2f6826e7",
-			"modelName": "InternetDocument",
-			"calledMethod": "getDocumentList",
-			"methodProperties": {
-				"DateTimeFrom": "01.05.2020",
-				"DateTimeTo": "23.05.2020",
-				"Page": "1",
-				"GetFullList": "1"
+const url = 'https://api.novaposhta.ua/v2.0/json/';
+const keyObj = {
+	"apiKey": `${key.value}`,
+	"modelName": "InternetDocument",
+	"calledMethod": "getDocumentList",
+	"methodProperties": {
+		"DateTimeFrom": "01.05.2020",
+		"DateTimeTo": "23.05.2020",
+		"Page": "1",
+		"GetFullList": "1"
+	}
+}
+function stringifyKeyObj(keyObj) {
+	return JSON.stringify(keyObj);
+}
+async function start(stringifyKeyObj) {
+	try {
+		const response = await fetch(url, {
+			method: 'POST',
+			body: stringifyKeyObj,
+			headers: {
+				'Content-Type': 'application/json'
 			}
-		}
-	),
-	headers: {
-		'Content-Type': 'application/json'
-	},
-	xhrFields: {
-		withCredentials: false
-	},
-	success: function (texts) {
-		console.log(texts);
-	},
-});
+		});
+		const answer = await response.json();
+		console.log('Успех:', answer);
+	} catch (error) {
+		console.error('Ошибка:', error);
+	}
+}
+// async function post1() {
+// let body = {
+// 	"apiKey": "bf9184305646fc07dfee4e2c2f6826e7",
+// 	"modelName": "InternetDocument",
+// 	"calledMethod": "getDocumentList",
+// 	"methodProperties": {
+// 		"DateTimeFrom": "01.05.2020",
+// 		"DateTimeTo": "23.05.2020",
+// 		"Page": "1",
+// 		"GetFullList": "1"
+// 	}
+// }
+// console.log(body.apiKey);
 
+
+// 	let response = await fetch('https://api.novaposhta.ua/v2.0/json/', {
+// 		method: 'POST',
+// 		dataType: 'json',
+// 		body: JSON.stringify(body),
+// 		headers: {
+// 			'Content-Type': 'application/json;charset=utf-8'
+// 		},
+
+// 	});
+
+// 	let result = await response;
+// 	console.log(result);
+
+// }
+// $.ajax({
+// 	type: 'POST',
+// 	dataType: 'json',
+// 	url: 'https://api.novaposhta.ua/v2.0/json/',
+// 	data: JSON.stringify(
+// 		{
+// 			"apiKey": `${key.value}`,
+// 			"modelName": "InternetDocument",
+// 			"calledMethod": "getDocumentList",
+// 			"methodProperties": {
+// 				"DateTimeFrom": "01.05.2020",
+// 				"DateTimeTo": "23.05.2020",
+// 				"Page": "1",
+// 				"GetFullList": "1"
+// 			}
+// 		}
+// 	),
+// 	headers: {
+// 		'Content-Type': 'application/json'
+// 	},
+// 	xhrFields: {
+// 		withCredentials: false
+// 	},
+// 	success: function (texts) {
+// 		console.log(texts);
+// 	},
+// });
 
 // function getsFilms() {
 // 	fetch('https://api.novaposhta.ua/v2.0/json/')
