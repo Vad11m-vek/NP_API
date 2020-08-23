@@ -40,8 +40,8 @@ async function start(stringifyKeyObj) {
 	const answer = await response.json();
 	console.log('Успех:', answer);
 	for (let i in answer.data) {
-		//console.log('ЕН', answer.data[i].IntDocNumber);
+		console.log('ЕН', answer.data[i].IntDocNumber);
 
 	}
-	document.querySelector('#out').innerHTML += JSON.stringify(answer);
+	//document.querySelector('#out').innerHTML += JSON.stringify(answer);
 }
