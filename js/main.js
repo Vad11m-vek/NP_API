@@ -10,7 +10,7 @@ const keyObj = {
 	"calledMethod": "getDocumentList",
 	"methodProperties": {
 		"DateTimeFrom": "10.08.2020",
-		"DateTimeTo": "12.08.2020",
+		"DateTimeTo": "10.08.2020",
 		"Page": "1",
 		"GetFullList": "1"
 	}
