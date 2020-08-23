@@ -43,5 +43,5 @@ async function start(stringifyKeyObj) {
 		//console.log('ЕН', answer.data[i].IntDocNumber);
 
 	}
-	//document.querySelector('#out').innerHTML += JSON.stringify(answer);
+	document.querySelector('#out').innerHTML += JSON.stringify(answer);
 }
